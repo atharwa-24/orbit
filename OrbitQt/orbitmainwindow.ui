@@ -31,7 +31,7 @@
       </property>
       <widget class="QTabWidget" name="MainTabWidget">
        <property name="currentIndex">
-        <number>0</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="HomeTab">
         <attribute name="title">
@@ -241,22 +241,10 @@
     <addaction name="actionReport_Missing_Feature"/>
     <addaction name="actionReport_Bug"/>
    </widget>
-   <widget class="QMenu" name="menuCrash">
-    <property name="title">
-     <string>Crash Test</string>
-    </property>
-    <addaction name="actionCheckFalse"/>
-    <addaction name="actionNullPointerDereference"/>
-    <addaction name="actionStackOverflow"/>
-    <addaction name="actionServiceCheckFalse"/>
-    <addaction name="actionServiceNullPointerDereference"/>
-    <addaction name="actionServiceStackOverflow"/>
-   </widget>
    <widget class="QMenu" name="menuDebug">
     <property name="title">
      <string>Debug</string>
     </property>
-    <addaction name="menuCrash"/>
    </widget>
    <widget class="QMenu" name="menuTools">
     <property name="title">
@@ -314,6 +302,9 @@
    </property>
    <property name="toolTip">
     <string>Clear Capture</string>
+   </property>
+   <property name="shortcut">
+    <string>Z</string>
    </property>
   </action>
   <action name="actionFilter_Tracks">
@@ -401,7 +392,7 @@
     <string>[Service] Check False</string>
    </property>
   </action>
-    <action name="actionServiceNullPointerDereference">
+  <action name="actionServiceNullPointerDereference">
    <property name="text">
     <string>[Service] Null Pointer Dereference</string>
    </property>
