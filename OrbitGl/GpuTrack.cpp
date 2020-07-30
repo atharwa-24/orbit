@@ -55,7 +55,7 @@ GpuTrack::GpuTrack(TimeGraph* time_graph,
   string_manager_ = string_manager;
 
   // Gpu tracks are collapsed by default.
-  collapse_toggle_.SetState(
+  collapse_toggle_->SetState(
       TriangleToggle::State::kCollapsed,
       TriangleToggle::InitialStateUpdate::kReplaceInitialState);
 }
@@ -159,7 +159,7 @@ void GpuTrack::UpdatePrimitives(uint64_t min_tick, uint64_t max_tick,
   float world_start_x = canvas->GetWorldTopLeftX();
   float world_width = canvas->GetWorldWidth();
   double inv_time_window = 1.0 / time_graph_->GetTimeWindowUs();
-  bool is_collapsed = collapse_toggle_.IsCollapsed();
+  bool is_collapsed = collapse_toggle_->IsCollapsed();
 
   std::vector<std::shared_ptr<TimerChain>> chains_by_depth = GetTimers();
 
@@ -281,7 +281,7 @@ std::string GpuTrack::GetTooltip() const {
 //-----------------------------------------------------------------------------
 float GpuTrack::GetHeight() const {
   TimeGraphLayout& layout = time_graph_->GetLayout();
-  bool collapsed = collapse_toggle_.IsCollapsed();
+  bool collapsed = collapse_toggle_->IsCollapsed();
   uint32_t depth = collapsed ? 1 : GetDepth();
   return layout.GetTextBoxHeight() * depth + layout.GetTrackBottomMargin();
 }

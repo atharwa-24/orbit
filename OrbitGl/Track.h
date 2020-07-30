@@ -23,7 +23,7 @@ class GlCanvas;
 class TimeGraph;
 
 //-----------------------------------------------------------------------------
-class Track : public Pickable {
+class Track : public Pickable, public std::enable_shared_from_this<Track> {
  public:
   enum Type {
     kThreadTrack,
@@ -39,7 +39,8 @@ class Track : public Pickable {
 
   // Pickable
   void Draw(GlCanvas* a_Canvas, PickingMode a_PickingMode) override;
-  virtual void UpdatePrimitives(uint64_t min_tick, uint64_t max_tick, PickingMode picking_mode);
+  virtual void UpdatePrimitives(uint64_t min_tick, uint64_t max_tick,
+                                PickingMode picking_mode);
   void OnPick(int a_X, int a_Y) override;
   void OnRelease() override;
   void OnDrag(int a_X, int a_Y) override;
@@ -98,5 +99,5 @@ class Track : public Pickable {
   bool m_PickingEnabled = false;
   Type type_ = kUnknown;
   std::vector<std::shared_ptr<Track>> children_;
-  TriangleToggle collapse_toggle_;
+  std::shared_ptr<TriangleToggle> collapse_toggle_;
 };

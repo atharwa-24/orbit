@@ -100,7 +100,7 @@ float ThreadTrack::GetYFromDepth(float track_y, uint32_t depth,
 }
 
 float ThreadTrack::GetYFromDepth(uint32_t depth) {
-  return GetYFromDepth(m_Pos[1], depth, collapse_toggle_.IsCollapsed());
+  return GetYFromDepth(m_Pos[1], depth, collapse_toggle_->IsCollapsed());
 }
 
 //-----------------------------------------------------------------------------
@@ -162,7 +162,7 @@ void ThreadTrack::UpdatePrimitives(uint64_t min_tick, uint64_t max_tick, Picking
   float world_start_x = canvas->GetWorldTopLeftX();
   float world_width = canvas->GetWorldWidth();
   double inv_time_window = 1.0 / time_graph_->GetTimeWindowUs();
-  bool is_collapsed = collapse_toggle_.IsCollapsed();
+  bool is_collapsed = collapse_toggle_->IsCollapsed();
   float box_height = layout.GetTextBoxHeight();
   if (is_collapsed && depth_ > 0) {
     box_height /= static_cast<float>(depth_);
@@ -285,7 +285,7 @@ std::string ThreadTrack::GetTooltip() const {
 //-----------------------------------------------------------------------------
 float ThreadTrack::GetHeight() const {
   TimeGraphLayout& layout = time_graph_->GetLayout();
-  bool is_collapsed = collapse_toggle_.IsCollapsed();
+  bool is_collapsed = collapse_toggle_->IsCollapsed();
   uint32_t collapsed_depth = (GetNumTimers() == 0) ? 0 : 1;
   uint32_t depth = is_collapsed ? collapsed_depth : GetDepth();
   return layout.GetTextBoxHeight() * depth +
