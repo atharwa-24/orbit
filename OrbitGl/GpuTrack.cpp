@@ -258,9 +258,6 @@ void GpuTrack::UpdatePrimitives(uint64_t min_tick, uint64_t max_tick,
 }
 
 //-----------------------------------------------------------------------------
-void GpuTrack::OnDrag(int x, int y) { Track::OnDrag(x, y); }
-
-//-----------------------------------------------------------------------------
 void GpuTrack::OnTimer(const TimerInfo& timer_info) {
   TextBox text_box(Vec2(0, 0), Vec2(0, 0), "", Color(255, 0, 0, 255));
   text_box.SetTimerInfo(timer_info);

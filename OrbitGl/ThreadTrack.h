@@ -26,7 +26,6 @@ class ThreadTrack : public Track {
 
   // Pickable
   void Draw(GlCanvas* canvas, PickingMode picking_mode) override;
-  void OnDrag(int x, int y) override;
   void OnTimer(const orbit_client_protos::TimerInfo& timer_info);
   std::string GetTooltip() const override;
 

@@ -259,9 +259,6 @@ void ThreadTrack::UpdatePrimitives(uint64_t min_tick, uint64_t max_tick, Picking
 }
 
 //-----------------------------------------------------------------------------
-void ThreadTrack::OnDrag(int x, int y) { Track::OnDrag(x, y); }
-
-//-----------------------------------------------------------------------------
 void ThreadTrack::OnTimer(const TimerInfo& timer_info) {
   if (timer_info.type() != TimerInfo::kCoreActivity) {
     UpdateDepth(timer_info.depth() + 1);
